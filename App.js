@@ -28,7 +28,7 @@ export default function App() {
     <Provider store={store}>
       <AuthScreen/>
       <View style={styles.container}>
-        <Text> Please work bruh nonsense :(</Text>
+        <Text></Text>
         <StatusBar style="auto"></StatusBar>
       </View>
 
