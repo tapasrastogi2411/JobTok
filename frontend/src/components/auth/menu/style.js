@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     },
 
     containerMain: {
-        flex: 1, padding: 20
+        flex: 1, padding: 30
 
     },
     headerText: {
@@ -33,9 +33,20 @@ const styles = StyleSheet.create({
     },
 
     containerBottomButton: {
-     
 
+        backgroundColor: 'ghostwhite',
+        borderColor: 'lightgray',
+        borderWidth: 1,
+        borderStyle: 'solid',
+        padding: 30,
+        justifyContent: 'space-between',
+        alignItems: "center"
 
+    
+    },
+    containBottomButtonText: {
+        fontWeight: 'bold',
+        color: 'red'
     }
 
 });
