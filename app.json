@@ -26,7 +26,18 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "config": {
+        "firebase": {
+          "apiKey": "AIzaSyDWdMcpbTyXUdlxG35HT_SaFmnuhK2sUzU",
+          "authDomain": "jobtok-cb709.firebaseapp.com",
+          "projectId": "jobtok-cb709",
+          "storageBucket": "jobtok-cb709.appspot.com",
+          "messagingSenderId": "746028032784",
+          "appId": "1:746028032784:web:e76ed473817787b8613b95",
+          "measurementId": "G-TE2GZF3SN6"
+        }
+      }
     }
   }
 }
