@@ -63,8 +63,8 @@ const styles = StyleSheet.create({
     postButtonText: {
         marginLeft: 5,
         color: 'white',
-        fontWeight: 'bold',
-        fontSize: 16
+        fontSize: 16,
+        fontWeight: 'bold'
     }
 });
 

@@ -29,6 +29,7 @@ export default function SavePostScreen(props) {
     return (
         <View style={styles.container}>
             <View style={styles.formContainer}>
+
                 <TextInput
                     style={styles.inputText}
                     maxLength={150}
