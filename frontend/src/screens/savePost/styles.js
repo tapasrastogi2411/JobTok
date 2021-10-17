@@ -19,8 +19,7 @@ const styles = StyleSheet.create({
     },
     buttonsContainer: {
         flexDirection: 'row',
-        marginHorizontal: 20,
-        marginVertical: 20
+        margin: 20,
     },
     inputText: {
         paddingVertical: 10,
@@ -35,7 +34,7 @@ const styles = StyleSheet.create({
     cancelButton: {
         alignItems: 'center',
         flex: 1,
-        borderCoor: 'lightgray',
+        borderColor: 'lightgray',
         borderWidth: 1,
         flexDirection: 'row',
         paddingVertical: 10,
@@ -58,8 +57,8 @@ const styles = StyleSheet.create({
     cancelButtonText: {
         marginLeft: 5,
         color: 'black',
-        fontSize: 16,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontSize: 16
     },
     postButtonText: {
         marginLeft: 5,
