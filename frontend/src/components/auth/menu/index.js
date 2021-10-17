@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import styles from "./style";
 import { Feather } from '@expo/vector-icons';
 
-export default function AuthMenu({authPage, detailsPage, setDetailsPage}) {
+export default function AuthMenu({authPage, setAuthPage, detailsPage, setDetailsPage}) {
 
     return (
         <View style={styles.container}>
