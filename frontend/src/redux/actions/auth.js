@@ -3,7 +3,7 @@
 // Import firebase
 import firebase from 'firebase'
 import { USER_STATE_CHANGE } from '../constants'
-require('firebase/auth')
+require('firebase/firebase-auth')
 
 export const userAuthStateListener = () => dispatch => {
 
@@ -38,7 +38,7 @@ export const getCurrentUserData = () => dispatch => {
 }
 export const login = (email, password)  => dispatch => new Promise((resolve, reject) => {
 
-    console.log("Print statement 1 for login")
+    // console.log("Print statement 1 for login")
 
 
     firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
