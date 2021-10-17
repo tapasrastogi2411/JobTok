@@ -2,11 +2,11 @@
 
 // Import firebase
 import firebase from 'firebase'
-require('firebase/auth')
+require('firebase/firebase-auth')
 
 export const login = (email, password)  => new Promise((resolve, reject) => {
 
-    console.log("Print statement 1 for login")
+    // console.log("Print statement 1 for login")
 
 
     firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
