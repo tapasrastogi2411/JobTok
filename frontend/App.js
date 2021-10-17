@@ -13,6 +13,7 @@ import Constants from 'expo-constants';
 // Initialise firebase project
 import firebase from 'firebase/app';
 import AuthScreen from './src/screens/auth';
+import Route from './src/navigation/main';
 
 // Initialising the store 
 const store = createStore(rootReducer, applyMiddleware(thunk))
@@ -26,12 +27,7 @@ export default function App() {
   return (
 
     <Provider store={store}>
-      <AuthScreen/>
-      <View style={styles.container}>
-        <Text></Text>
-        <StatusBar style="auto"></StatusBar>
-      </View>
-
+      <Route />
     </Provider>
   );
 }

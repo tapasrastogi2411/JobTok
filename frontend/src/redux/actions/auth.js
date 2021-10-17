@@ -20,7 +20,7 @@ export const userAuthStateListener = () => dispatch => {
 
 }
 
-export const getCurrentUserData = () => {
+export const getCurrentUserData = () => dispatch => {
 
     firebase.firestore()
     .collection('user')
