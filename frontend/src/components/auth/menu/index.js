@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import styles from "./style";
 import { Feather } from '@expo/vector-icons';
 
-export default function AuthMenu({authPage, setAuthPage}) {
+export default function AuthMenu({authPage, detailsPage, setDetailsPage}) {
 
     return (
         <View style={styles.container}>
@@ -12,7 +12,7 @@ export default function AuthMenu({authPage, setAuthPage}) {
                 <Text style={styles.headerText}>
                     {authPage == 0 ? 'Sign In': 'Sign Up'}
                 </Text>
-                <TouchableOpacity style={styles.providerButton}>
+                <TouchableOpacity style={styles.providerButton} onPress = {() =>  setDetailsPage(true)}>
                     <Feather name="user" size={24} color="black" />
                     <Text style={styles.providerButtonText}> Use Email</Text>
                     <View />
