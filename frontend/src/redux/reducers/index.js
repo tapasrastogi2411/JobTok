@@ -1,6 +1,10 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
+import { auth } from './auth';
+import { posts } from './posts';
 
-const Reducers = combineReducers({})
+const Reducers = combineReducers({
+	auth,
+	posts,
+});
 
-export default Reducers
-// console.log("Hello WOrld")
+export default Reducers;
