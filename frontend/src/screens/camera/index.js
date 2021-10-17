@@ -1,14 +1,44 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
 import styles from './styles'
-export default function CameraScreen() {
+import { Camera } from 'expo-camera'
+import { Audio } from 'expo-av'
+import * as ImagePicker from 'expo-image-picker'
+import * as MediaLibrary from 'expo-media-library'
+import { Feather } from '@expo/vector-icons'
 
-    
+export default function CameraScreen() {
+    const [hasCameraPermissions, setHasCameraPermissions] = useState(false)
+    const [hasAudioPermissions, setHasAudioPermissions] = useState(false)
+    const [hasGalleryPermissions, setHasGalleryPermissions] = useState(false)
+
+    const [galleryItems, setGalleryItems] = useState([])
+
     const [cameraRef, setCameraRef] = useState(null)
     const [cameraType, setCameraType] = useState(Camera.Constants.Type.back)
     const [cameraFlash, setCameraFlash] = useState(Camera.Constants.Flash.off)
     const [isCameraReady, setIsCameraReady] = useState(false)
     const isFocused = useIsFocused()
+
+    const navigation = useNavigation()
+
+    useEffect(() => {
+       (async () => {
+            const cameraStatus = await Camera.requestPermissionsAsync()
+            setHasCameraPermissions(cameraStatus.status == 'granted')
+
+            const audioStatus = await Audio.requestPermissionsAsync()
+            setHasAudioPermissions(audioStatus.status == 'granted')
+
+            const galleryStatus = await ImagePicker.requestMediaLibraryPermissionsAsync()
+            setHasGalleryPermissions(galleryStatus.status == 'granted')
+
+            if (galleryStatus.status == 'granted') {
+                const userGalleryMedia = await MediaLibrary.getAssetsAsync({sortBy: ['creationTime'], mediaType: ['video']})
+                setGalleryItems(userGalleryMedia.assets)
+            }
+       })()
+    }, [])
 
     const recordVideo = async () => {
         if (cameraRef) {
@@ -18,6 +48,7 @@ export default function CameraScreen() {
                 if (videoRecordPromise) {
                     const data = await videoRecordPromise;
                     const source = data.uri
+                    navigation.navigate('savePost', { source })
                 }
             } catch (error) {
                 console.warn(error)
@@ -31,6 +62,25 @@ export default function CameraScreen() {
         }
     }
 
+    const pickFromGallery = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.Videos,
+            allowsEditing: true,
+            aspect: [16, 9],
+            quality: 1
+        })
+        if(!result.cancelled) {
+            navigation.navigate('savePost', { source: result.uri })
+        }
+    }
+
+    if(!hasCameraPermissions || !hasAudioPermissions || !hasGalleryPermissions) {
+        return(
+            <View></View>
+        )
+    }
+
+    // we can set FlashMode.torch instead of FlashMode.on
     return (
         <View style = {styles.container}>
             {isFocused ?
@@ -43,6 +93,22 @@ export default function CameraScreen() {
                 onCameraReady = {() => setIsCameraReady(true)}
             />
             : null}
+
+            <View style = {styles.sideBarContainer}>
+                <TouchableOpacity 
+                    style = {styles.sideBarButton}
+                    onPress={() => setCameraType(cameraType === Camera.Constants.Type.back ? Camera.Constants.Type.front : Camera.Constants.Type.back)}>
+                    <Feather name="refresh-ccw" size = {24} color = {'white'}/>
+                    <Text style = {styles.iconText}>Flip</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity 
+                    style = {styles.sideBarButton}
+                    onPress={() => setCameraFlash(cameraFlash === Camera.Constants.FlashMode.off ? Camera.Constants.FlashMode.on : Camera.Constants.FlashMode.off)}> 
+                    <Feather name="zap" size = {24} color = {'white'}/>
+                    <Text style = {styles.iconText}>Flash</Text>
+                </TouchableOpacity>
+            </View>
 
             <View style = {styles.bottomBarContainer}>
                 <View style ={{ flex:1 }}></View>
@@ -58,12 +124,13 @@ export default function CameraScreen() {
 
                 <View style = {{flex: 1}}>
                     <TouchableOpacity
+                        onPress = {() => pickFromGallery()}
                         style = {styles.galleryButton}>
                             {galleryItems[0] == undefined ?
                             <></>
                         :
                         <Image
-                            styles = {styles.galleryImageButton}
+                            style = {styles.galleryImageButton}
                             source = {{uri: galleryItems[0].uri}}
                         />}
                     </TouchableOpacity>

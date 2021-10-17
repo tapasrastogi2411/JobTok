@@ -37,6 +37,25 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         width: 50,
         height: 50
+    },
+    galleryButtonImage: {
+         width: 50,
+        height: 50
+    },
+    sideBarContainer: {
+        top: 60, 
+        right: 0,
+        marginHorizontal: 20,
+        position: 'absolute'
+    },
+    iconText: {
+        color: 'white',
+        fontSize: 12,
+        marginTop: 5
+    },
+    sideBarButton: {
+        alignItems: 'center',
+        marginBottom: 25
     }
 });
 
