@@ -2,9 +2,9 @@
 
 // Import firebase
 import firebase from 'firebase'
-require('firebase/firebase-auth')
+require('firebase/auth')
 
-export const login = (email, password) => dispatch => new Promise((resolve, reject) => {
+export const login = (email, password)  => new Promise((resolve, reject) => {
 
     console.log("Print statement 1 for login")
 
@@ -21,7 +21,7 @@ export const login = (email, password) => dispatch => new Promise((resolve, reje
 
 // Handling registration now, which is almost similar to login
 
-export const register = (email, password) => dispatch => new Promise((resolve, reject) => {
+export const register = (email, password)  => new Promise((resolve, reject) => {
 
     console.log("Print statement 1 for register")
 
