@@ -21,5 +21,5 @@ We worked on an existing concept and remodeled it to fit the needs of 21st centu
 ### What we learned
 We learned how to use React Native to build and style the layout for JobTok, Firebase for storage and hours of debugging as well as searching through stack overflow forums. Moreover, we learned to focus on existing proven concepts and reusing them for a different niche market through the help and guidance of the mentors.
 
-### What's next for JobTok
+### What's next for JobTok 
 We plan to implement user roles such as employer and applicant to improve usability. Another feature is a resume auto-loader/builder that complements an applicant's profile.
