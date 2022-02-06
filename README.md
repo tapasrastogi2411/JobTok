@@ -1,4 +1,4 @@
-# JobTok: Tiktok for Recruiting
+# JobTok: Tiktok for Recruiting 
  
 Hack the Valley 2021 Submission for Jobtok where job seekers are able to present an elevator pitch to recruiters before their resume is read. It gives an opportunity for the recruiter to meet the face before the CV.
 
